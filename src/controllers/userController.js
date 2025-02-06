@@ -31,3 +31,13 @@ const getAllUsers = async (req, res) => {
         res.status(500).json({ message: 'Error al obtener usuarios', error: error.message });
     }
 };
+
+const getUserById = async (req, res) => {
+    try {
+        const user = await User.findById(req.params.id).select('-password');
+        if (!user) return res.status(404).json({ message: "Usuario no encontrado" });
+        res.json(user);
+    } catch (error) {
+        res.status(500).json({ message: 'Error al obtener usuario', error: error.message });
+    }
+};
