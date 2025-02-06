@@ -8,6 +8,7 @@ const connectDB = require('./config/db');
 const authRoutes = require('./routers/authRoutes');
 const productRoutes = require('./routers/productRoutes');
 const orderRoutes = require('./routers/orderRoutes');
+const userRoutes = require('./routers/userRoutes');
 
 
 dotenv.config();
@@ -23,6 +24,7 @@ app.use(morgan('dev'));
 app.use('/api/auth', authRoutes);
 app.use('/api/products', productRoutes);
 app.use('/api/orders', orderRoutes);
+app.use('/api/users', userRoutes);
 
 //comprobando si ruta raiz funcional
 app.get('/', (req, res) => {
